@@ -1,22 +1,27 @@
 type TodoItemProps = {
-    id: number;
-    label: string;
-    done: boolean;
-    onChange: (id: number) => void;
-}
+  id: number;
+  label: string;
+  done: boolean;
+  onChange: (id: number) => void;
+};
 
 export function TodoItem(props: TodoItemProps) {
-    const { id, label, done, onChange } = props;
+  const { id, label, done, onChange } = props;
 
-    function handleChange() {
-        console.log('Ты нажал на checkbox! Молодчинка')
-        onChange(id);
-    }
+  function handleChange() {
+    onChange(id);
+  }
 
-    return (
-        <div className="todo-item">
-            <input type="checkbox" checked={done} onChange={handleChange} />
-            <span>{label}</span>
-        </div>
-    )
+  return (
+    <label className={`todo-item ${done ? 'todo-item--done' : ''}`}>
+      <input
+        className="todo-item__checkbox"
+        type="checkbox"
+        checked={done}
+        onChange={handleChange}
+      />
+      <span className="todo-item__custom-checkbox" aria-hidden="true" />
+      <span className="todo-item__label">{label}</span>
+    </label>
+  );
 }

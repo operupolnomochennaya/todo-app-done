@@ -1,5 +1,4 @@
-import { useState } from 'react';
-import type { FormEvent } from 'react';
+import { useState, type FormEvent } from 'react';
 import type { TodoItemType } from '../../shared/types.ts';
 
 type TodoFormProps = {
@@ -34,10 +33,11 @@ export function TodoForm({ onAdd }: TodoFormProps) {
         type="text"
         value={label}
         onChange={(event) => setLabel(event.target.value)}
-        placeholder="Введите новую задачу"
+        placeholder="Например: подготовить домашку"
+        aria-label="Новая задача"
       />
       <button className="todo-form__button" type="submit">
-        Добавить задачу
+        Добавить
       </button>
     </form>
   );
